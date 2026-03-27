@@ -1,0 +1,22 @@
+[dataset]
+name = "pubmed_rct"
+schema_version = "1.0"
+source = "pubmed_rct"
+default_split = "auto"
+train_ratio = 0.8
+validation_ratio = 0.1
+test_ratio = 0.1
+split_key = "pmid"
+
+[cleaning]
+normalize_unicode = true
+collapse_whitespace = true
+preserve_section_headers = true
+canonical_section_order = ["background", "objective", "methods", "results", "conclusion"]
+
+[compatibility]
+row_id_fields = ["row_id", "id", "doc_id", "uid", "pmid"]
+title_fields = ["title", "article_title", "headline"]
+abstract_fields = ["abstract", "abstract_text", "summary"]
+split_fields = ["split", "subset"]
+label_fields = ["label", "target", "y"]

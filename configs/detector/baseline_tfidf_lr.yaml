@@ -1,0 +1,13 @@
+detector:
+  kind: baseline_tfidf_lr
+  model_artifact: artifacts/models/baseline_tfidf_lr.joblib
+  threshold_artifact: artifacts/models/baseline_tfidf_lr_threshold.json
+  tfidf_word_ngram_max: 2
+  tfidf_char_ngram_max: 5
+  max_word_features: 12000
+  max_char_features: 8000
+  logistic_c: 2.0
+  calibration_cv: 3
+  threshold_metric: f1
+  use_embeddings: false
+

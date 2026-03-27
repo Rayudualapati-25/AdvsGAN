@@ -1,0 +1,11 @@
+adversary:
+  backend: mock
+  output_path: data/processed/attacked.jsonl
+  enabled_splits: [train, val, test]
+  attacks:
+    - paraphrase
+    - compress_expand
+    - style_transfer
+  strength: medium
+  max_variants_per_row: 1
+

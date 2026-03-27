@@ -1,0 +1,8 @@
+eval:
+  prediction_output: artifacts/reports/predictions.jsonl
+  metrics_output: artifacts/reports/metrics.json
+  report_output: artifacts/reports/report.md
+  plots_prefix: artifacts/figures/eval
+  evaluate_splits: [test]
+  positive_label: synthetic
+

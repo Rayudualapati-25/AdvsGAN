@@ -1,0 +1,8 @@
+{
+  "attack": "paraphrase",
+  "replace_phrases": true,
+  "reorder_sentences": true,
+  "swap_two_sentences": false,
+  "strength": 0.7
+}
+

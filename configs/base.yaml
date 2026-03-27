@@ -1,0 +1,69 @@
+name: base
+description: Shared defaults for the biofake pipeline.
+seed: 13
+paths:
+  root_dir: .
+  data_dir: data
+  external_dir: data/external
+  interim_dir: data/interim
+  processed_dir: data/processed
+  splits_dir: data/splits
+  artifacts_dir: artifacts
+  runs_dir: artifacts/runs
+  models_dir: artifacts/models
+  reports_dir: artifacts/reports
+  figures_dir: artifacts/figures
+  tables_dir: artifacts/tables
+logging:
+  level: INFO
+data:
+  dataset_name: pubmed_rct
+  raw_train_path: data/external/pubmed-rct/PubMed_20k_RCT_numbers_replaced_with_at_sign/train.txt
+  raw_val_path: data/external/pubmed-rct/PubMed_20k_RCT_numbers_replaced_with_at_sign/dev.txt
+  raw_test_path: data/external/pubmed-rct/PubMed_20k_RCT_numbers_replaced_with_at_sign/test.txt
+  processed_path: data/processed/processed.jsonl
+  dedupe: true
+  min_sentences: 2
+  max_samples_per_split: 0
+generation:
+  backend: auto
+  model_id: Qwen2.5-0.5B-Instruct
+  model_path: data/external/models/qwen2.5-0.5b-instruct.gguf
+  fallback_model_id: TinyLlama-1.1B-Chat-v1.0
+  fallback_model_path: data/external/models/tinyllama-1.1b-chat.gguf
+  output_path: data/processed/generated.jsonl
+  enabled_splits: [train, val, test]
+  temperature: 0.2
+  max_new_tokens: 220
+  system_prompt_style: biomedical_abstract
+adversary:
+  backend: auto
+  output_path: data/processed/attacked.jsonl
+  enabled_splits: [train, val, test]
+  attacks: [paraphrase, compress_expand, style_transfer]
+  strength: medium
+  max_variants_per_row: 1
+detector:
+  kind: hybrid_cpu
+  model_artifact: artifacts/models/hybrid_cpu.joblib
+  threshold_artifact: artifacts/models/hybrid_cpu_threshold.json
+  tfidf_word_ngram_max: 2
+  tfidf_char_ngram_max: 5
+  max_word_features: 20000
+  max_char_features: 12000
+  logistic_c: 3.0
+  calibration_cv: 3
+  threshold_metric: f1
+  use_embeddings: true
+  embedding_model_name: allenai/scibert_scivocab_uncased
+  embedding_dim_fallback: 64
+  embedding_batch_size: 8
+  local_files_only: true
+eval:
+  prediction_output: artifacts/reports/predictions.jsonl
+  metrics_output: artifacts/reports/metrics.json
+  report_output: artifacts/reports/report.md
+  plots_prefix: artifacts/figures/eval
+  evaluate_splits: [test]
+  positive_label: synthetic
+

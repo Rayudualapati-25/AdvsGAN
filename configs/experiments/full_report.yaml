@@ -1,0 +1,12 @@
+name: full_report
+description: Full end-to-end run with generation, attacks, training, evaluation, and report assets.
+includes:
+  - ../paths.yaml
+  - ../logging.yaml
+  - ../data/pubmed_rct.yaml
+  - ../generation/qwen_small.yaml
+  - ../adversary/rewrite_cpu.yaml
+  - ../detector/hybrid_cpu.yaml
+  - ../eval/default.yaml
+seed: 34
+

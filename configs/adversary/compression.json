@@ -1,0 +1,6 @@
+{
+  "attack": "compression_expansion",
+  "mode": "compress",
+  "max_sentences": 2
+}
+

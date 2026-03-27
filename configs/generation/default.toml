@@ -1,0 +1,19 @@
+[generation]
+backend = "auto"
+model_path = ""
+model_name = "biofake-local"
+seed = 13
+max_tokens = 256
+temperature = 0.0
+top_p = 1.0
+stop = ["<|end|>"]
+
+[llama_cpp]
+n_ctx = 2048
+n_threads = 4
+n_gpu_layers = 0
+verbose = false
+
+[fallback]
+model_name = "deterministic-fallback"
+style = "structured_abstract"

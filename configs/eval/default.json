@@ -1,0 +1,7 @@
+{
+  "label_field": "label",
+  "baseline_prediction_field": "baseline_prediction",
+  "adversarial_prediction_field": "adversarial_prediction",
+  "attack_metadata_field": "attack_metadata"
+}
+

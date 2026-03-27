@@ -1,0 +1,5 @@
+data:
+  train_ratio: 0.8
+  validation_ratio: 0.1
+  test_ratio: 0.1
+

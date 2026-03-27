@@ -1,0 +1,10 @@
+generation:
+  backend: mock
+  model_id: seqgan_legacy
+  model_path: ""
+  output_path: data/processed/generated_seqgan_legacy.jsonl
+  enabled_splits: [train, val, test]
+  temperature: 0.0
+  max_new_tokens: 120
+  system_prompt_style: seqgan_legacy
+

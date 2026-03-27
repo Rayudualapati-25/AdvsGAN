@@ -1,0 +1,12 @@
+name: robust_hybrid
+description: CPU-first robust biomedical text deepfake detector with adversarial rewrites.
+includes:
+  - ../paths.yaml
+  - ../logging.yaml
+  - ../data/pubmed_rct.yaml
+  - ../generation/qwen_small.yaml
+  - ../adversary/rewrite_cpu.yaml
+  - ../detector/hybrid_cpu.yaml
+  - ../eval/default.yaml
+seed: 21
+

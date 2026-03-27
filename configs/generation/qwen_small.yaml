@@ -1,0 +1,12 @@
+generation:
+  backend: auto
+  model_id: Qwen2.5-0.5B-Instruct
+  model_path: data/external/models/qwen2.5-0.5b-instruct.gguf
+  fallback_model_id: TinyLlama-1.1B-Chat-v1.0
+  fallback_model_path: data/external/models/tinyllama-1.1b-chat.gguf
+  output_path: data/processed/generated.jsonl
+  enabled_splits: [train, val, test]
+  temperature: 0.2
+  max_new_tokens: 220
+  system_prompt_style: biomedical_abstract
+

@@ -1,0 +1,11 @@
+name: screenshot_baseline
+description: Legacy screenshot-friendly baseline with a simple detector.
+includes:
+  - ../paths.yaml
+  - ../logging.yaml
+  - ../data/pubmed_rct.yaml
+  - ../generation/seqgan_legacy.yaml
+  - ../detector/baseline_tfidf_lr.yaml
+  - ../eval/default.yaml
+seed: 13
+

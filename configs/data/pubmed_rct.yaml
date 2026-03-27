@@ -1,0 +1,10 @@
+data:
+  dataset_name: pubmed_rct
+  raw_train_path: data/external/pubmed-rct/PubMed_20k_RCT_numbers_replaced_with_at_sign/train.txt
+  raw_val_path: data/external/pubmed-rct/PubMed_20k_RCT_numbers_replaced_with_at_sign/dev.txt
+  raw_test_path: data/external/pubmed-rct/PubMed_20k_RCT_numbers_replaced_with_at_sign/test.txt
+  processed_path: data/processed/processed.jsonl
+  dedupe: true
+  min_sentences: 2
+  max_samples_per_split: 0
+
