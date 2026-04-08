@@ -31,7 +31,25 @@ def readability_array(records: Sequence[dict] | pd.DataFrame) -> np.ndarray:
         words_per_sentence = word_count / sentence_count
         syllables_per_word = syllable_count / word_count
         flesch = 206.835 - 1.015 * words_per_sentence - 84.6 * syllables_per_word
-        features.append([sentence_count, word_count, words_per_sentence, syllables_per_word, flesch])
+
+        # Gunning Fog Index
+        complex_words = sum(1 for w in words if _syllables(w) >= 3)
+        complex_word_ratio = complex_words / word_count
+        gunning_fog = 0.4 * (words_per_sentence + 100.0 * complex_word_ratio)
+
+        # Coleman-Liau Index
+        char_count = sum(len(w) for w in words)
+        letters_per_100 = (char_count / word_count) * 100
+        sentences_per_100 = (sentence_count / word_count) * 100
+        coleman_liau = 0.0588 * letters_per_100 - 0.296 * sentences_per_100 - 15.8
+
+        # Long word ratio (6+ chars)
+        long_word_ratio = sum(1 for w in words if len(w) >= 6) / word_count
+
+        features.append([
+            sentence_count, word_count, words_per_sentence, syllables_per_word,
+            flesch, gunning_fog, coleman_liau, complex_word_ratio, long_word_ratio,
+        ])
     return np.asarray(features, dtype=float)
 
 

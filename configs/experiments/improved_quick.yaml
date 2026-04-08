@@ -1,0 +1,40 @@
+name: improved_quick
+description: Improved pipeline with tuned detector and all 3 attack families.
+includes:
+  - ../paths.yaml
+  - ../logging.yaml
+  - ../data/pubmed_rct.yaml
+  - ../generation/qwen_small.yaml
+  - ../eval/default.yaml
+seed: 34
+
+data:
+  max_samples_per_split: 500
+
+adversary:
+  backend: mock
+  output_path: data/processed/attacked.jsonl
+  enabled_splits: [train, val, test]
+  attacks:
+    - paraphrase
+    - compress_expand
+    - style_transfer
+  strength: medium
+  max_variants_per_row: 3
+
+detector:
+  kind: hybrid_cpu
+  model_artifact: artifacts/models/hybrid_cpu_improved.joblib
+  threshold_artifact: artifacts/models/hybrid_cpu_improved_threshold.json
+  tfidf_word_ngram_max: 3
+  tfidf_char_ngram_max: 6
+  max_word_features: 30000
+  max_char_features: 18000
+  logistic_c: 5.0
+  calibration_cv: 5
+  threshold_metric: f1
+  use_embeddings: true
+  embedding_model_name: allenai/scibert_scivocab_uncased
+  embedding_dim_fallback: 64
+  embedding_batch_size: 16
+  local_files_only: true
